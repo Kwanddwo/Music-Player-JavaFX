@@ -1,5 +1,6 @@
 package com.example;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -10,6 +11,8 @@ import org.jaudiotagger.tag.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class AudioMetadata {
     private String artist;
@@ -29,6 +32,12 @@ public class AudioMetadata {
             this.title = tag.getFirst(FieldKey.TITLE);
             this.genre = tag.getFirst(FieldKey.GENRE);
             this.year = tag.getFirst(FieldKey.YEAR);
+
+            artist = Objects.equals(artist, "") ? "Unknown" : artist;
+            album = Objects.equals(album, "") ? "Unknown" : album;
+            title = Objects.equals(title, "") ? "Unknown" : title;
+            genre = Objects.equals(genre, "") ? "Unknown" : genre;
+            year = Objects.equals(year, "") ? "Unknown" : year;
             // This is set to the default artwork if no artwork is found
             this.artwork = AudioArtworkUtil.getArtwork(audioFile);
     }

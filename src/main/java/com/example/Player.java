@@ -74,6 +74,7 @@ public class Player {
         mediaPlayer = new MediaPlayer(currMedia);
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
         setCurrentSongMetadata();
+        createNextSongListener();
         play();
     }
 
@@ -97,7 +98,10 @@ public class Player {
 
     private void initializeVolumeSlider() {
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> mediaPlayer.setVolume(volumeSlider.getValue() * 0.01));
+    }
 
+    private void createNextSongListener() {
+        mediaPlayer.setOnEndOfMedia(this::goToNextSong);
     }
 
     private void initializePlayBar() {
