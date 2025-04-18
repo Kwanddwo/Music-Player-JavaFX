@@ -188,6 +188,8 @@ public class Player {
                 songs.add(new Song(file));
                 System.out.println(file);
             }
+            songIndex = 0;
+            playCurrSong();
         } else {
             System.out.println("No files selected.");
         }
