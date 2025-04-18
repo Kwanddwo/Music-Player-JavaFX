@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="867.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller">
+   <children>
+      <HBox maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #783016;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="fileButton" mnemonicParsing="false" onAction="#fileButtonClicked" style="-fx-background-color: none;" text="File..." textFill="#f6f6f6">
+               <rotationAxis>
+                  <Point3D x="1.0" y="1.0" />
+               </rotationAxis>
+            </Button>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="244.0" layoutY="23.0" spacing="20.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ImageView fx:id="songArtwork" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
+               <rotationAxis>
+                  <Point3D x="1.0" y="1.0" z="1.0" />
+               </rotationAxis>
+               <image>
+                  <Image url="@defaultArtwork.jpg" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label fx:id="songName" style="-fx-text-fill: #F6F6F6;" text="Title">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="songArtist" style="-fx-text-fill: #B0B0B0;" text="Artist">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="45.0" layoutY="389.0" maxHeight="84.0" minHeight="84.0" prefHeight="84.0" style="-fx-background-color: #783016;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="24.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fx:id="songArtworkSmall" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@defaultArtwork.jpg" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="99.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="songNameSmall" prefHeight="25.0" prefWidth="132.0" style="-fx-text-fill: #F6F6F6;" text="Title">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="songArtistSmall" prefHeight="25.0" prefWidth="129.0" style="-fx-text-fill: #B0B0B0;" text="Artist" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" spacing="12.0" HBox.hgrow="NEVER">
+               <children>
+                  <HBox alignment="CENTER" spacing="16.0">
+                     <children>
+                        <Button fx:id="backButton" maxHeight="24.0" maxWidth="25.0" minHeight="24.0" minWidth="25.0" mnemonicParsing="false" onAction="#previousMedia" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: none;">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/skip_previous.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="playButton" maxHeight="24.0" maxWidth="25.0" minHeight="24.0" minWidth="25.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: none;">
+                           <graphic>
+                              <ImageView fx:id="playButtonIcon" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/play.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="nextButton" maxHeight="24.0" maxWidth="25.0" minHeight="24.0" minWidth="25.0" mnemonicParsing="false" onAction="#nextMedia" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: none;">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/skip_next.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="playBar" prefHeight="14.0" prefWidth="244.0" style="-fx-accent: #3b82f6; -fx-background-radius: 5;" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/music_note.png" />
+                     </image>
+                  </ImageView>
+                  <Slider fx:id="volumeSlider" blockIncrement="1.0" max="150.0" style="-fx-accent: orange;" value="100.0" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="16.0" right="16.0" />
+         </padding></HBox>
+   </children>
+</AnchorPane>
