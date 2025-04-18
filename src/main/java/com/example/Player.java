@@ -122,6 +122,7 @@ public class Player {
     public void onPrevButtonPressed() {
         if (count == 0) {
             mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
             count = 1;
 
             timer.schedule(new TimerTask() {
