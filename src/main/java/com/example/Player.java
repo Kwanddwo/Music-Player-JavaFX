@@ -72,6 +72,7 @@ public class Player {
     private void playCurrSong() {
         currMedia = new Media(songs.get(songIndex).getAudioFile().toURI().toString());
         mediaPlayer = new MediaPlayer(currMedia);
+        mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
         setCurrentSongMetadata();
         play();
     }
