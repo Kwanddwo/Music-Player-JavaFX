@@ -51,7 +51,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        player = new Player(volumeSlider, playBar, songName, songNameSmall, songArtist, songArtistSmall, songArtwork, songArtworkSmall);
+        player = new Player(volumeSlider, playBar, songName, songNameSmall, songArtist, songArtistSmall, songArtwork, songArtworkSmall, playButtonIcon);
 
     }
 

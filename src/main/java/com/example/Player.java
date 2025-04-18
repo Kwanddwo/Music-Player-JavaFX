@@ -30,6 +30,7 @@ public class Player {
     private Label songArtistSmall;
     private ImageView songArtwork;
     private ImageView songArtworkSmall;
+    private ImageView playButtonIcon;
 
     private final Timer timer = new Timer(true);
     private int count = 0;
@@ -40,7 +41,7 @@ public class Player {
     public MediaPlayer mediaPlayer;
     private boolean playing;
 
-    public Player(Slider volumeSlider, Slider playBar, Label songName, Label songNameSmall, Label songArtist, Label songArtistSmall, ImageView songArtwork, ImageView songArtworkSmall) {
+    public Player(Slider volumeSlider, Slider playBar, Label songName, Label songNameSmall, Label songArtist, Label songArtistSmall, ImageView songArtwork, ImageView songArtworkSmall, ImageView playButtonIcon) {
         this.volumeSlider = volumeSlider;
         this.playBar = playBar;
         this.songName = songName;
@@ -49,6 +50,7 @@ public class Player {
         this.songArtistSmall = songArtistSmall;
         this.songArtwork = songArtwork;
         this.songArtworkSmall = songArtworkSmall;
+        this.playButtonIcon = playButtonIcon;
 
         songs = new ArrayList<Song>();
 
@@ -71,7 +73,7 @@ public class Player {
         currMedia = new Media(songs.get(songIndex).getAudioFile().toURI().toString());
         mediaPlayer = new MediaPlayer(currMedia);
         setCurrentSongMetadata();
-        mediaPlayer.play();
+        play();
     }
 
     private void updateSliderFromMouse(MouseEvent event) {
@@ -119,9 +121,9 @@ public class Player {
 
             timer.schedule(new TimerTask() {
                 @Override public void run() {
-                    count = 0;  // resets after 250 ms
+                    count = 0;
                 }
-            }, 250);
+            }, 500);
         }
         else if (count == 1) {
             // second press within 250 ms
@@ -131,7 +133,7 @@ public class Player {
     }
 
     private void goToPreviousSong() {
-        songIndex = (songIndex - 1) % songs.size();
+        songIndex = songIndex > 0 ? songIndex - 1 : songs.size() - 1 ;
         mediaPlayer.stop();
         playCurrSong();
     }
@@ -141,21 +143,29 @@ public class Player {
     }
 
     private void goToNextSong() {
-        songIndex = (songIndex - 1) % songs.size();
+        songIndex = (songIndex + 1) % songs.size();
         mediaPlayer.stop();
         playCurrSong();
     }
 
     public void onPlayButtonPressed(ImageView playButtonIcon) {
         if (playing) {
-            mediaPlayer.pause();
-            playButtonIcon.setImage(new Image(getClass().getResource("/com/example/icons/play.png").toExternalForm()));
-            playing = false;
+            pause();
         } else {
-            mediaPlayer.play();
-            playButtonIcon.setImage(new Image(getClass().getResource("/com/example/icons/pause.png").toExternalForm()));
-            playing = true;
+            play();
         }
+    }
+
+    public void pause() {
+        mediaPlayer.pause();
+        playButtonIcon.setImage(new Image(getClass().getResource("/com/example/icons/play.png").toExternalForm()));
+        playing = false;
+    }
+
+    public void play() {
+        mediaPlayer.play();
+        playButtonIcon.setImage(new Image(getClass().getResource("/com/example/icons/pause.png").toExternalForm()));
+        playing = true;
     }
 
     public void onFileButtonPressed(ActionEvent event) {
