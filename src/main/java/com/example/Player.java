@@ -183,6 +183,7 @@ public class Player {
         List<File> selectedFiles = fileChooser.showOpenMultipleDialog(stage);
 
         if (selectedFiles != null && !selectedFiles.isEmpty()) {
+            mediaPlayer.stop();
             songs.clear();
             for (File file : selectedFiles) {
                 songs.add(new Song(file));
