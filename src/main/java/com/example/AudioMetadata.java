@@ -35,7 +35,7 @@ public class AudioMetadata {
 
             artist = Objects.equals(artist, "") ? "Unknown" : artist;
             album = Objects.equals(album, "") ? "Unknown" : album;
-            title = Objects.equals(title, "") ? "Unknown" : title;
+            title = Objects.equals(title, "") ? file.getFile().getName() : title;
             genre = Objects.equals(genre, "") ? "Unknown" : genre;
             year = Objects.equals(year, "") ? "Unknown" : year;
             // This is set to the default artwork if no artwork is found
